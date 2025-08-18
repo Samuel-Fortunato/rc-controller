@@ -1,0 +1,1 @@
+/usr/bin/avr-gcc -mmcu=atmega328 "CMakeFiles/rc-controller.elf.dir/main.c.obj" "CMakeFiles/rc-controller.elf.dir/lib/adc/adc.c.obj" -o rc-controller.elf 

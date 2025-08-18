@@ -1,0 +1,59 @@
+<circuit version="1.1.0-SR1" rev="2005" stepSize="1000000" stepsPS="1000000" NLsteps="100000" reaStep="1000000" animate="1" >
+
+<item itemtype="MCU" CircId="mega328-2" mainComp="false" Show_id="true" Show_Val="false" Pos="-36,-4" rotation="0" hflip="1" vflip="1" label="mega328-2" idLabPos="0,-20" labelrot="0" valLabPos="-16,20" valLabRot="0" Frequency="16 MHz" Program="build/rc-controller.hex" Auto_Load="true" saveEepr="true" Logic_Symbol="false" Rst_enabled="false" Ext_Osc="false" Wdt_enabled="false" Clk_Out="false" varList="ADCSRA,ADCH,,ADMUX" MainMcu="true" SerialMon="-1" />
+
+<item itemtype="KY023" CircId="KY023-4" mainComp="false" Show_id="false" Show_Val="false" Pos="116,16" rotation="90" hflip="1" vflip="1" label="KY023-4" idLabPos="-34,20" labelrot="-90" valLabPos="-16,20" valLabRot="0" />
+
+<item itemtype="Tunnel" CircId="Tunnel-5" mainComp="false" Show_id="false" Show_Val="false" Pos="72,4" rotation="90" hflip="1" vflip="1" label="Tunnel-5" idLabPos="-16,-24" labelrot="0" valLabPos="-16,20" valLabRot="0" Name="Stick-1" IsBus="true" />
+
+<item itemtype="Bus" CircId="Bus-6" mainComp="false" Show_id="false" Show_Val="false" Pos="72,12" rotation="0" hflip="-1" vflip="1" label="Bus-6" idLabPos="-16,-24" labelrot="0" valLabPos="-16,20" valLabRot="0" Num_Bits="2 _bits" Start_Bit="0" />
+
+<item itemtype="KY023" CircId="KY023-7" mainComp="false" Show_id="false" Show_Val="false" Pos="200,16" rotation="90" hflip="1" vflip="1" label="KY023-7" idLabPos="-34,20" labelrot="-90" valLabPos="-16,20" valLabRot="0" />
+
+<item itemtype="Bus" CircId="Bus-8" mainComp="false" Show_id="false" Show_Val="false" Pos="156,12" rotation="0" hflip="-1" vflip="1" label="Bus-8" idLabPos="-16,-24" labelrot="0" valLabPos="-16,20" valLabRot="0" Num_Bits="2 _bits" Start_Bit="0" />
+
+<item itemtype="Tunnel" CircId="Tunnel-9" mainComp="false" Show_id="false" Show_Val="false" Pos="156,4" rotation="90" hflip="1" vflip="1" label="Tunnel-9" idLabPos="-16,-24" labelrot="0" valLabPos="-16,20" valLabRot="0" Name="Stick-2" IsBus="true" />
+
+<item itemtype="Tunnel" CircId="Tunnel-10" mainComp="false" Show_id="false" Show_Val="false" Pos="12,36" rotation="360" hflip="-1" vflip="1" label="Tunnel-10" idLabPos="-16,-24" labelrot="0" valLabPos="-16,20" valLabRot="0" Name="Stick-1" IsBus="true" />
+
+<item itemtype="Tunnel" CircId="Tunnel-11" mainComp="false" Show_id="false" Show_Val="false" Pos="12,20" rotation="360" hflip="-1" vflip="1" label="Tunnel-11" idLabPos="-16,-24" labelrot="0" valLabPos="-16,20" valLabRot="0" Name="Stick-2" IsBus="true" />
+
+<item itemtype="Bus" CircId="Bus-12" mainComp="false" Show_id="false" Show_Val="false" Pos="12,44" rotation="0" hflip="1" vflip="1" label="Bus-12" idLabPos="-16,-24" labelrot="0" valLabPos="-16,20" valLabRot="0" Num_Bits="2 _bits" Start_Bit="0" />
+
+<item itemtype="Bus" CircId="Bus-13" mainComp="false" Show_id="false" Show_Val="false" Pos="12,28" rotation="0" hflip="1" vflip="1" label="Bus-13" idLabPos="-16,-24" labelrot="0" valLabPos="-16,20" valLabRot="0" Num_Bits="2 _bits" Start_Bit="0" />
+
+<item itemtype="Rail" CircId="Rail-16" mainComp="false" ShowProp="Voltage" Show_id="false" Show_Val="true" Pos="16,84" rotation="90" hflip="1" vflip="-1" label="Rail-16" idLabPos="-5,-10" labelrot="-90" valLabPos="-12.9612,6" valLabRot="-90" Voltage="5 V" />
+
+<item itemtype="Node" CircId="Node-18" mainComp="false" Pos="16,68" />
+
+<item itemtype="Connector" uid="Connector-1" startpinid="Bus-6-ePin1" endpinid="KY023-4-vrx" pointList="80,4,80,4" />
+
+<item itemtype="Connector" uid="Connector-2" startpinid="Bus-6-ePin2" endpinid="KY023-4-vry" pointList="80,12,80,12" />
+
+<item itemtype="Connector" uid="Connector-3" startpinid="Tunnel-5-pin" endpinid="Bus-6-busPinI" pointList="72,4,72,4" />
+
+<item itemtype="Connector" uid="Connector-4" startpinid="Bus-8-ePin1" endpinid="KY023-7-vrx" pointList="164,4,164,4" />
+
+<item itemtype="Connector" uid="Connector-5" startpinid="Tunnel-9-pin" endpinid="Bus-8-busPinI" pointList="156,4,156,4" />
+
+<item itemtype="Connector" uid="Connector-6" startpinid="Bus-8-ePin2" endpinid="KY023-7-vry" pointList="164,12,164,12" />
+
+<item itemtype="Connector" uid="Connector-7" startpinid="Bus-12-ePin1" endpinid="mega328-2-PORTC1" pointList="4,36,4,36" />
+
+<item itemtype="Connector" uid="Connector-8" startpinid="Bus-12-ePin2" endpinid="mega328-2-PORTC0" pointList="4,44,4,44" />
+
+<item itemtype="Connector" uid="Connector-10" startpinid="Bus-13-ePin1" endpinid="mega328-2-PORTC3" pointList="4,20,4,20" />
+
+<item itemtype="Connector" uid="Connector-11" startpinid="Bus-13-ePin2" endpinid="mega328-2-PORTC2" pointList="4,28,4,28" />
+
+<item itemtype="Connector" uid="Connector-13" startpinid="Tunnel-11-pin" endpinid="Bus-13-busPinI" pointList="12,20,12,20" />
+
+<item itemtype="Connector" uid="Connector-14" startpinid="Tunnel-10-pin" endpinid="Bus-12-busPinI" pointList="12,36,12,36" />
+
+<item itemtype="Connector" uid="Connector-25" startpinid="mega328-2-PORTV1" endpinid="Node-18-1" pointList="4,60,16,60,16,68" />
+
+<item itemtype="Connector" uid="Connector-26" startpinid="Rail-16-outnod" endpinid="Node-18-0" pointList="16,68,16,68" />
+
+<item itemtype="Connector" uid="Connector-27" startpinid="Node-18-2" endpinid="mega328-2-PORTV0" pointList="16,68,4,68" />
+
+</circuit>
