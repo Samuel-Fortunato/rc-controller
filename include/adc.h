@@ -31,7 +31,7 @@ void adc_init(ADC_REF v_ref);
 */
 uint8_t adc_read8(ADC_CHANNEL channel);
 /*	10-bit result */
-uint16_t adc_read16(ADC_CHANNEL channel);
+uint16_t adc_read10(ADC_CHANNEL channel);
 
 /*
 	Starts conversion on (channel) and calls (callback) function when done

@@ -29,7 +29,7 @@ uint8_t adc_read8(ADC_CHANNEL channel) {
 		
 	return ADCH;
 }
-uint16_t adc_read16(ADC_CHANNEL channel) {
+uint16_t adc_read10(ADC_CHANNEL channel) {
 	if (!initialized) {
 		return 0;
 	}
