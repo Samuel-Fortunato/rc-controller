@@ -1,4 +1,0 @@
-/home/samuel/avr/rc-controller/build/CMakeFiles/rc-controller.elf.dir
-/home/samuel/avr/rc-controller/build/CMakeFiles/flash.dir
-/home/samuel/avr/rc-controller/build/CMakeFiles/edit_cache.dir
-/home/samuel/avr/rc-controller/build/CMakeFiles/rebuild_cache.dir
