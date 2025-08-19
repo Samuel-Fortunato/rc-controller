@@ -35,11 +35,11 @@ uint16_t adc_read10(ADC_CHANNEL channel);
 
 /*
 	Starts conversion on (channel) and calls (callback) function when done
-	Non-blocking - returns after conversion is started
-	returns 0 on success
-	returns 1 if ADC is busy
+	
+	Non-blocking:	waits while ADC is busy
+					returns after conversion is started
 	8-bit result
 */
-uint8_t adc_start_conv8(ADC_CHANNEL channel, void (*callback)(ADC_CHANNEL channel, uint8_t value));
+void adc_start_conv8(ADC_CHANNEL channel, void (*callback)(ADC_CHANNEL channel, uint8_t value));
 /*	10-bit result */
-uint8_t adc_start_conv10(ADC_CHANNEL channel, void (*callback)(ADC_CHANNEL channel, uint16_t value));
+void adc_start_conv10(ADC_CHANNEL channel, void (*callback)(ADC_CHANNEL channel, uint16_t value));
