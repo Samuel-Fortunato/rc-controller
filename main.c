@@ -17,7 +17,7 @@ int main() {
 	DIDR0 |= 0b00001111;
 	
 	while (1) {
-		reading = adc_read8(ADC0);
+		adc_read8(ADC0, &reading);
 		PORTD = 1 << (reading / 32);
 	}
 }
