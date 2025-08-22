@@ -35,6 +35,8 @@ uint8_t adc_read10(ADC_CHANNEL channel, uint16_t *dest) {
 		return -1;
 	}
 	
+	ADMUX = (ADMUX & 0xF0) | (channel & 0x0F);
+	
 	ADCSRA |= _BV(ADSC);
 	while ( bit_is_set(ADCSRA, _BV(ADSC)) );
 	
