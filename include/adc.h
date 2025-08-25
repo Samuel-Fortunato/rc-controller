@@ -33,9 +33,9 @@ void adc_init(ADC_REF v_ref);
 	
 	8-bit result
 */
-uint8_t adc_read8(ADC_CHANNEL channel, uint8_t *dest);
+int8_t adc_read8(ADC_CHANNEL channel, uint8_t *dest);
 /*	10-bit result */
-uint8_t adc_read10(ADC_CHANNEL channel, uint16_t *dest);
+int8_t adc_read10(ADC_CHANNEL channel, uint16_t *dest);
 
 /*
 	Starts conversion on (channel) and calls (callback) function when done
@@ -49,6 +49,6 @@ uint8_t adc_read10(ADC_CHANNEL channel, uint16_t *dest);
 	
 	8-bit result
 */
-uint8_t adc_start_conv8(ADC_CHANNEL channel, void (*callback)(ADC_CHANNEL channel, uint8_t value));
+int8_t adc_start_conv8(ADC_CHANNEL channel, void (*callback)(ADC_CHANNEL channel, uint8_t value));
 /*	10-bit result */
-uint8_t adc_start_conv10(ADC_CHANNEL channel, void (*callback)(ADC_CHANNEL channel, uint16_t value));
+int8_t adc_start_conv10(ADC_CHANNEL channel, void (*callback)(ADC_CHANNEL channel, uint16_t value));
