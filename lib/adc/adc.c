@@ -16,8 +16,8 @@ void adc_init(ADC_REF v_ref) {
 	//	ADC 	enable		prescaler
 	ADCSRA = _BV(ADEN) | (ADC_PRESCALE & 0b00000111);
 	
-	//		voltage_reference	left align
-	ADMUX = (v_ref << REFS0) | _BV(ADLAR);
+	//		voltage_reference
+	ADMUX = (v_ref << REFS0);
 	
 	initialized = 1;
 }
@@ -37,7 +37,7 @@ int8_t adc_read8(ADC_CHANNEL channel, uint8_t *dest) {
 	ADCSRA |= _BV(ADSC);
 	while ( bit_is_set(ADCSRA, ADSC) );
 	
-	*dest = ADCH;
+	*dest = ADC >> 2;
 	
 	return 0;
 }
@@ -55,7 +55,7 @@ int8_t adc_read10(ADC_CHANNEL channel, uint16_t *dest) {
 	ADCSRA |= _BV(ADSC);
 	while ( bit_is_set(ADCSRA, ADSC) );
 	
-	*dest = ADC >> 6;
+	*dest = ADC;
 	
 	return 0;
 }
@@ -109,9 +109,9 @@ ISR(ADC_vect) {
 	ADCSRA &= ~_BV(ADIE);
 	
 	if (async_10bit) {
-		_callback10(async_channel , ADC >> 6);
+		_callback10(async_channel , ADC);
 	}
 	else {
-		_callback8(async_channel , ADCH);
+		_callback8(async_channel , ADC >> 2);
 	}
 }
