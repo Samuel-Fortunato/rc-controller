@@ -28,11 +28,15 @@
 
 <item itemtype="7-Seg BCD" CircId="7-Seg BCD-32" mainComp="false" Show_id="false" Show_Val="false" Pos="-100,-28" rotation="720" hflip="1" vflip="1" label="7-Seg BCD-32" idLabPos="-16,-40" labelrot="0" valLabPos="-16,20" valLabRot="0" Show_Point_Pin="false" Show_Enable_Pin="false" />
 
-<item itemtype="7-Seg BCD" CircId="7-Seg BCD-35" mainComp="false" Show_id="false" Show_Val="false" Pos="-144,-28" rotation="1080" hflip="1" vflip="1" label="7-Seg BCD-35" idLabPos="-16,-40" labelrot="0" valLabPos="-16,20" valLabRot="0" Show_Point_Pin="false" Show_Enable_Pin="false" />
+<item itemtype="7-Seg BCD" CircId="7-Seg BCD-35" mainComp="false" Show_id="false" Show_Val="false" Pos="-144,-28" rotation="1080" hflip="1" vflip="1" label="7-Seg BCD-35" idLabPos="-16,-40" labelrot="0" valLabPos="-16,20" valLabRot="0" Show_Point_Pin="false" Show_Enable_Pin="true" />
 
-<item itemtype="7-Seg BCD" CircId="7-Seg BCD-46" mainComp="false" Show_id="false" Show_Val="false" Pos="-180,-28" rotation="1080" hflip="1" vflip="1" label="7-Seg BCD-46" idLabPos="-16,-40" labelrot="0" valLabPos="-16,20" valLabRot="0" Show_Point_Pin="false" Show_Enable_Pin="false" />
+<item itemtype="7-Seg BCD" CircId="7-Seg BCD-46" mainComp="false" Show_id="false" Show_Val="false" Pos="-180,-28" rotation="1080" hflip="1" vflip="1" label="7-Seg BCD-46" idLabPos="-16,-40" labelrot="0" valLabPos="-16,20" valLabRot="0" Show_Point_Pin="false" Show_Enable_Pin="true" />
+
+<item itemtype="Fixed Voltage" CircId="Fixed Voltage-59" mainComp="false" Show_id="false" Show_Val="false" Pos="-148,-84" rotation="0" hflip="1" vflip="1" label="Fixed Voltage-59" idLabPos="-64,-24" labelrot="0" valLabPos="-16,8" valLabRot="0" Voltage="5 V" Out="true" />
 
 <item itemtype="Node" CircId="Node-20" mainComp="false" Pos="12,68" />
+
+<item itemtype="Node" CircId="Node-60" mainComp="false" Pos="-132,-68" />
 
 <item itemtype="Connector" uid="Connector-3" startpinid="Tunnel-5-pin" endpinid="Bus-6-busPinI" pointList="72,4,72,4" />
 
@@ -76,24 +80,30 @@
 
 <item itemtype="Connector" uid="Connector-44" startpinid="mega328-2-PORTD4" endpinid="7-Seg BCD-32-in0" pointList="-44,44,-88,44,-88,4" />
 
-<item itemtype="Connector" uid="Connector-52" startpinid="7-Seg BCD-35-in1" endpinid="mega328-2-PORTB1" pointList="-140,4,-140,124,4,124,4,108" />
-
-<item itemtype="Connector" uid="Connector-53" startpinid="7-Seg BCD-35-in2" endpinid="mega328-2-PORTB2" pointList="-148,4,-148,128,8,128,8,100,4,100" />
-
-<item itemtype="Connector" uid="Connector-55" startpinid="7-Seg BCD-35-in0" endpinid="mega328-2-PORTB0" pointList="-132,4,-132,108,-44,108" />
-
 <item itemtype="Connector" uid="Connector-59" startpinid="Bus-6-ePin1" endpinid="KY023-4-vrx" pointList="80,4,80,4" />
 
 <item itemtype="Connector" uid="Connector-65" startpinid="KY023-4-vry" endpinid="Bus-6-ePin2" pointList="80,12,80,12" />
 
-<item itemtype="Connector" uid="Connector-69" startpinid="7-Seg BCD-35-in3" endpinid="mega328-2-PORTB3" pointList="-156,4,-156,132,12,132,12,92,4,92" />
+<item itemtype="Connector" uid="Connector-90" startpinid="7-Seg BCD-35-in3" endpinid="mega328-2-PORTB3" pointList="-156,4,-156,132,12,132,12,92,4,92" />
 
-<item itemtype="Connector" uid="Connector-70" startpinid="mega328-2-PORTB4" endpinid="7-Seg BCD-46-in0" pointList="4,84,16,84,16,136,-168,136,-168,4" />
+<item itemtype="Connector" uid="Connector-91" startpinid="mega328-2-PORTB5" endpinid="7-Seg BCD-46-in1" pointList="4,76,20,76,20,140,-176,140,-176,4" />
 
-<item itemtype="Connector" uid="Connector-71" startpinid="mega328-2-PORTB5" endpinid="7-Seg BCD-46-in1" pointList="4,76,20,76,20,140,-176,140,-176,4" />
+<item itemtype="Connector" uid="Connector-92" startpinid="7-Seg BCD-35-in2" endpinid="mega328-2-PORTB2" pointList="-148,4,-148,128,8,128,8,100,4,100" />
 
-<item itemtype="Connector" uid="Connector-72" startpinid="mega328-2-PORTB6" endpinid="7-Seg BCD-46-in2" pointList="-44,68,-184,68,-184,4" />
+<item itemtype="Connector" uid="Connector-93" startpinid="mega328-2-PORTB4" endpinid="7-Seg BCD-46-in0" pointList="4,84,16,84,16,136,-168,136,-168,4" />
 
-<item itemtype="Connector" uid="Connector-73" startpinid="mega328-2-PORTB7" endpinid="7-Seg BCD-46-in3" pointList="-44,76,-192,76,-192,4" />
+<item itemtype="Connector" uid="Connector-114" startpinid="7-Seg BCD-35-in1" endpinid="mega328-2-PORTB1" pointList="-140,4,-140,124,4,124,4,108" />
+
+<item itemtype="Connector" uid="Connector-115" startpinid="mega328-2-PORTB7" endpinid="7-Seg BCD-46-in3" pointList="-44,76,-192,76,-192,4" />
+
+<item itemtype="Connector" uid="Connector-116" startpinid="7-Seg BCD-35-in0" endpinid="mega328-2-PORTB0" pointList="-132,4,-132,108,-44,108" />
+
+<item itemtype="Connector" uid="Connector-117" startpinid="mega328-2-PORTB6" endpinid="7-Seg BCD-46-in2" pointList="-44,68,-184,68,-184,4" />
+
+<item itemtype="Connector" uid="Connector-119" startpinid="Node-60-1" endpinid="7-Seg BCD-35-in4" pointList="-132,-68,-132,-60" />
+
+<item itemtype="Connector" uid="Connector-120" startpinid="Fixed Voltage-59-outnod" endpinid="Node-60-0" pointList="-132,-84,-132,-68" />
+
+<item itemtype="Connector" uid="Connector-121" startpinid="Node-60-2" endpinid="7-Seg BCD-46-in4" pointList="-132,-68,-168,-68,-168,-60" />
 
 </circuit>
