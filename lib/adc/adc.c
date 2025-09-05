@@ -1,9 +1,7 @@
-#include "adc.h"
+#include "adc/adc.h"
 
 #include <avr/io.h>
 #include <avr/interrupt.h>
-
-#include "prescaler.h"
 
 uint8_t initialized = 0;
 
@@ -12,9 +10,9 @@ ADC_CHANNEL async_channel;
 void (*_callback8)(ADC_CHANNEL channel, uint8_t value);
 void (*_callback10)(ADC_CHANNEL channel, uint16_t value);
 
-void adc_init(ADC_REF v_ref) {
+void adc_init(ADC_REF v_ref, uint8_t prescaler) {
 	//	ADC 	enable		prescaler
-	ADCSRA = _BV(ADEN) | (ADC_PRESCALE & 0b00000111);
+	ADCSRA = _BV(ADEN) | (prescaler & 0b00000111);
 	
 	//		voltage_reference
 	ADMUX = (v_ref << REFS0);

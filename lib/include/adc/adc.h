@@ -22,7 +22,7 @@ typedef enum {
 	ADC_CHA_GND = 15,
 } ADC_CHANNEL;
 
-void adc_init(ADC_REF v_ref);
+void adc_init(ADC_REF v_ref, uint8_t prescaler);
 
 /*
 	Reads the value on (channel) and returns the value

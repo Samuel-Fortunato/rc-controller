@@ -13,7 +13,7 @@ add_compile_definitions(F_CPU=${CLOCK_SPEED}UL)
 add_link_options(-mmcu=${MCU})
 
 add_executable(${PROJECT_NAME}.elf main.c lib/adc/adc.c)
-include_directories(include/)
+include_directories(lib/include/)
 
 add_custom_command(
     TARGET ${PROJECT_NAME}.elf POST_BUILD

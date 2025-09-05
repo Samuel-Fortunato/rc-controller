@@ -1,7 +1,8 @@
 #include <avr/io.h>
 #include <util/delay.h>
 
-#include "adc.h"
+#include "adc/adc.h"
+#include "adc/prescaler.h"
 
 #define X1_PIN ADC0
 #define Y1_PIN ADC1
@@ -16,7 +17,7 @@ int main() {
 	// global interrupt enable
 	SREG |= _BV(7);
 	
-	adc_init(REF_AVCC);
+	adc_init(REF_AVCC, ADC_PRESCALE);
 	DIDR0 |= 0b00001111;
 	
 	DDRD = 0xFF;
