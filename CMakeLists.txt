@@ -12,8 +12,10 @@ add_compile_options(-mmcu=${MCU})
 add_compile_definitions(F_CPU=${CLOCK_SPEED}UL)
 add_link_options(-mmcu=${MCU})
 
-add_executable(${PROJECT_NAME}.elf main.c lib/adc/adc.c)
-include_directories(lib/include/)
+add_executable(${PROJECT_NAME}.elf main.c)
+
+add_subdirectory(lib/avr-lib/)
+target_link_libraries(${PROJECT_NAME}.elf avr-lib)
 
 add_custom_command(
     TARGET ${PROJECT_NAME}.elf POST_BUILD
