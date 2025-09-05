@@ -19,5 +19,5 @@
 #elif (F_CPU / 128 >= 50000) && (F_CPU / 128 <= 200000)
 	#define ADC_PRESCALE 7
 #else
-	#error "No valid VAR found for this F_CPU"
+	#error "No valid PRESCALER found for this F_CPU"
 #endif
