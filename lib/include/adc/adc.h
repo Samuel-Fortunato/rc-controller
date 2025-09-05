@@ -1,6 +1,6 @@
 #pragma once
 
-#include <avr/io.h>
+#include <stdint.h>
 
 typedef enum {
 	REF_EXTERNAL = 0,
