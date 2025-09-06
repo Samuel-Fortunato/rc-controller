@@ -1,0 +1,10 @@
+"Battery (9V - 12,6V)" -> "Buck converter (5V)"
+"Buck converter (5V)" -> "Linear Regulator (3.3V)"
+"Buck converter (5V)" -> MCU
+"Linear Regulator (3.3V)" -> nRF24l01
+
+MCU -> nRF24l01
+
+"Stick 1" -> MCU
+"Stick 2" -> MCU
+Buttons -> MCU
