@@ -1,11 +1,3 @@
-"Battery (9V - 12,6V)" -> "Buck converter (5V)"
-"Battery (9V - 12,6V)" -> "Battery Sensor" 
-"Buck converter (5V)" -> "Linear Regulator (3.3V)"
-"Buck converter (5V)" -> MCU
-"Linear Regulator (3.3V)" -> nRF24l01
-
-nRF24l01 -> MCU
-"Battery Sensor" -> MCU
 "... other sensors" -> MCU
 
 MCU -> Servos
