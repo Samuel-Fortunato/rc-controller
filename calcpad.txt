@@ -1,0 +1,126 @@
+'<h3> ----- Battery ----- </h3>
+'<h5>LiPo cell voltages </h5>
+V_max_cell = 4.2V
+V_nom_cell = 3.7V
+V_min_cell = 3.0V
+
+'<h5> Characteristics </h5>
+n_cells = ? {3}
+Capacity = ? {1000}mAh
+C_rating = ? {20}h^-1
+
+#post
+'<h5> Specs </h5>
+V_max_batt = n_cells*V_max_cell
+V_nom_batt = n_cells*V_nom_cell
+V_min_batt = n_cells*V_min_cell
+
+I_max_batt = Capacity*C_rating|A
+
+#show
+'<h3> ----- MCU ----- </h3>
+'<h5> Absolute Maximum Ratings </h5>
+V_abs_max_MCU = 6V
+I_abs_max_pin = 40.0mA
+I_abs_max_MCU = 200.0mA
+
+'<h5> Application Characteristics </h5>
+V_CC = 5V
+T_min_MCU = ? {-10}°C
+T_max_MCU = ? {80}°C
+
+#post
+'<h5> Clock Frequency </h5>
+#if (T_min_MCU ≠ -10°C ∨ T_max_MCU ≠ 80°C)
+	'<p class="err"> ✖ Temperature Range Updated - Update F_MCU from datasheet </p>'
+#else
+	#hide
+	' ----- EDIT F_MCU HERE (according to temperature range) ----- '
+	F_MCU = 8.1MHz
+	F_MCU_err = 0.15MHz
+	#post
+	#val
+	'<p class="ok">
+	'F_MCU = 'F_MCU' ± 'F_MCU_err' MHz
+	'</p>
+	'<p>
+	'Range = ['F_MCU - F_MCU_err' ; 'F_MCU + F_MCU_err'] MHz
+	'</p>
+	#equ
+#end if
+
+#show
+'<h5> Typical and Maximum Characteristics </h5>
+I_max_MCU = 9mA
+I_typ_MCU = 5.2mA
+
+'<h5> ADC </h5>
+Z_max_ADC_src = 10kΩ
+
+"----- Voltage Sensor -----"
+'<div class="fold">
+'<h6>Possible Values</h6>
+#for option = 1 : 5
+	'<hr>
+	'<h6>'option'</h6>
+	#if option ≡ 1
+		R_1 = 24kΩ
+		R_2 = 15kΩ
+	#else if option ≡ 2
+		R_1 = 20kΩ
+		R_2 = 13kΩ
+	#else if option ≡ 3
+		R_1 = 27kΩ
+		R_2 = 16kΩ
+	#else if option ≡ 4
+		R_1 = 18kΩ
+		R_2 = 11kΩ
+	#else if option ≡ 5
+		R_1 = 16kΩ
+		R_2 = 10kΩ
+	#end if
+	
+	#hide
+	R_tot_div = R_1 + R_2
+	#show
+	V_max_sens = V_max_batt*((R_2)/(R_1 + R_2))
+	Z_sens = (R_1*R_2)/(R_1 + R_2)|kΩ
+	#if V_max_sens > V_CC
+		'<p class="err"> ✖ Invalid V Divider resistors - V_out too high</p>
+	#end if
+	#if Z_sens > Z_max_ADC_src
+		'<p class="err"> Z_sens (Voltage Sensor Impedance) above recomended - 'Z_max_ADC_src'</p>
+	#end if
+	I_loss_max_sens = V_max_batt/R_tot_div|μA
+	'Divider battery consumption = 'Capacity/I_loss_max_sens
+#loop
+'</div>
+
+'<h4> Selected Values </h4>
+R_1 = ? {24}kΩ
+R_2 = ? {15}kΩ
+
+#hide
+R_tot_div = R_1 + R_2
+#show
+V_max_sens = V_max_batt*((R_2)/(R_1 + R_2))
+Z_sens = (R_1*R_2)/(R_1 + R_2)|kΩ
+#if V_max_sens > V_CC
+	'<p class="err"> ✖ Invalid V Divider resistors - V_out too high</p>
+#end if
+#if Z_sens > Z_max_ADC_src
+	'<p class="err"> Z_sens (Voltage Sensor Impedance) above recomended - 'Z_max_ADC_src'</p>
+#end if
+
+I_loss_max_sens = V_max_batt/R_tot_div|μA
+'Divider battery consumption = 'Capacity/I_loss_max_sens
+
+
+
+
+
+
+
+
+
+
