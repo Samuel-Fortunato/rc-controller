@@ -58,63 +58,28 @@ I_typ_MCU = 5.2mA
 Z_max_ADC_src = 10kΩ
 
 "----- Voltage Sensor -----"
-'<div class="fold">
-'<h6>Possible Values</h6>
-#for option = 1 : 5
-	'<hr>
-	'<h6>'option'</h6>
-	#if option ≡ 1
-		R_1 = 24kΩ
-		R_2 = 15kΩ
-	#else if option ≡ 2
-		R_1 = 20kΩ
-		R_2 = 13kΩ
-	#else if option ≡ 3
-		R_1 = 27kΩ
-		R_2 = 16kΩ
-	#else if option ≡ 4
-		R_1 = 18kΩ
-		R_2 = 11kΩ
-	#else if option ≡ 5
-		R_1 = 16kΩ
-		R_2 = 10kΩ
-	#end if
-	
-	#hide
-	R_tot_div = R_1 + R_2
-	#show
-	V_max_sens = V_max_batt*((R_2)/(R_1 + R_2))
-	Z_sens = (R_1*R_2)/(R_1 + R_2)|kΩ
-	#if V_max_sens > V_CC
-		'<p class="err"> ✖ Invalid V Divider resistors - V_out too high</p>
-	#end if
-	#if Z_sens > Z_max_ADC_src
-		'<p class="err"> Z_sens (Voltage Sensor Impedance) above recomended - 'Z_max_ADC_src'</p>
-	#end if
-	I_loss_max_sens = V_max_batt/R_tot_div|μA
-	'Divider battery consumption = 'Capacity/I_loss_max_sens
-#loop
-'</div>
-
-'<h4> Selected Values </h4>
-R_1 = ? {24}kΩ
-R_2 = ? {15}kΩ
+R_1 = ? {27}kΩ
+R_2 = ? {16}kΩ
+R_tolerance = ? {5}%
 
 #hide
-R_tot_div = R_1 + R_2
+R_1_max = (1 + R_tolerance) * R_1
+R_1_min = (1 - R_tolerance) * R_1
+R_2_max = (1 + R_tolerance) * R_2
+R_2_min = (1 - R_tolerance) * R_2
+
 #show
-V_max_sens = V_max_batt*((R_2)/(R_1 + R_2))
-Z_sens = (R_1*R_2)/(R_1 + R_2)|kΩ
-#if V_max_sens > V_CC
+V_typ_max_sensor = V_max_batt*((R_2)/(R_1 + R_2))
+V_abs_max_sensor = V_max_batt*((R_2_max)/(R_1_min + R_2_max))
+Z_sensor = (R_1*R_2)/(R_1 + R_2)|kΩ
+#if V_abs_max_sensor > V_CC
 	'<p class="err"> ✖ Invalid V Divider resistors - V_out too high</p>
 #end if
-#if Z_sens > Z_max_ADC_src
+#if Z_sensor > Z_max_ADC_src
 	'<p class="err"> Z_sens (Voltage Sensor Impedance) above recomended - 'Z_max_ADC_src'</p>
 #end if
 
-I_loss_max_sens = V_max_batt/R_tot_div|μA
-'Divider battery consumption = 'Capacity/I_loss_max_sens
-
+I_loss_max_sensor = V_max_batt/(R_1 + R_2)|μA
 
 
 
