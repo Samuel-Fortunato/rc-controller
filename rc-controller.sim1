@@ -1,6 +1,6 @@
 <circuit version="1.1.0-SR1" rev="2005" stepSize="1000000" stepsPS="1000000" NLsteps="100000" reaStep="1000000" animate="1" >
 
-<item itemtype="MCU" CircId="mega328-2" mainComp="false" Show_id="true" Show_Val="false" Pos="-36,-4" rotation="0" hflip="1" vflip="1" label="mega328-2" idLabPos="0,-20" labelrot="0" valLabPos="-16,20" valLabRot="0" Frequency="16 MHz" Program="build/rc-controller.hex" Auto_Load="true" saveEepr="true" Logic_Symbol="false" Rst_enabled="false" Ext_Osc="false" Wdt_enabled="false" Clk_Out="false" varList="ADCSRA,ADCH,,ADMUX" MainMcu="true" SerialMon="-1" />
+<item itemtype="MCU" CircId="mega328-2" mainComp="false" Show_id="true" Show_Val="false" Pos="-36,-4" rotation="0" hflip="1" vflip="1" label="mega328-2" idLabPos="0,-20" labelrot="0" valLabPos="-16,20" valLabRot="0" Frequency="16 MHz" Program="build/rc-controller.hex" Auto_Load="true" saveEepr="true" Logic_Symbol="false" Rst_enabled="false" Ext_Osc="false" Wdt_enabled="false" Clk_Out="false" varList="ADCSRA,,,ADMUX,,ADCH,ADCL" MainMcu="true" SerialMon="-1" />
 
 <item itemtype="KY023" CircId="KY023-4" mainComp="false" Show_id="false" Show_Val="false" Pos="116,16" rotation="90" hflip="1" vflip="1" label="KY023-4" idLabPos="-34,20" labelrot="-90" valLabPos="-16,20" valLabRot="0" />
 
@@ -32,11 +32,25 @@
 
 <item itemtype="7-Seg BCD" CircId="7-Seg BCD-46" mainComp="false" Show_id="false" Show_Val="false" Pos="-180,-28" rotation="1080" hflip="1" vflip="1" label="7-Seg BCD-46" idLabPos="-16,-40" labelrot="0" valLabPos="-16,20" valLabRot="0" Show_Point_Pin="false" Show_Enable_Pin="true" />
 
-<item itemtype="Fixed Voltage" CircId="Fixed Voltage-59" mainComp="false" Show_id="false" Show_Val="false" Pos="-148,-84" rotation="0" hflip="1" vflip="1" label="Fixed Voltage-59" idLabPos="-64,-24" labelrot="0" valLabPos="-16,8" valLabRot="0" Voltage="5 V" Out="true" />
+<item itemtype="Fixed Voltage" CircId="Fixed Voltage-59" mainComp="false" Show_id="false" Show_Val="false" Pos="-148,-84" rotation="0" hflip="1" vflip="1" label="Fixed Voltage-59" idLabPos="-64,-24" labelrot="0" valLabPos="-16,8" valLabRot="0" Voltage="5 V" Out="false" />
+
+<item itemtype="Voltage Source" CircId="Voltage Source-61" mainComp="false" Show_id="true" Show_Val="false" Pos="-44,-216" rotation="0" hflip="1" vflip="1" label="Battery" idLabPos="-17.7589,-48" labelrot="0" valLabPos="-11.6921,28.4177" valLabRot="0" Running="true" Value_Volt="12.6 V" MaxValue="12.6 V" MinValue="9 V" />
+
+<item itemtype="Resistor" CircId="Resistor-62" mainComp="false" ShowProp="Resistance" Show_id="false" Show_Val="true" Pos="12,-184" rotation="90" hflip="-1" vflip="1" label="Resistor-62" idLabPos="-16,-24" labelrot="0" valLabPos="-16,6" valLabRot="0" Resistance="27 kΩ" />
+
+<item itemtype="Resistor" CircId="Resistor-63" mainComp="false" ShowProp="Resistance" Show_id="false" Show_Val="true" Pos="12,-136" rotation="90" hflip="-1" vflip="1" label="Resistor-63" idLabPos="-16,-24" labelrot="0" valLabPos="-16,6" valLabRot="0" Resistance="16 kΩ" />
+
+<item itemtype="Ground" CircId="Ground-64" mainComp="false" Show_id="false" Show_Val="false" Pos="12,-96" rotation="0" hflip="1" vflip="1" label="Ground-64" idLabPos="-16,8" labelrot="0" valLabPos="-16,20" valLabRot="0" />
+
+<item itemtype="Tunnel" CircId="Tunnel-65" mainComp="false" Show_id="false" Show_Val="false" Pos="4,-160" rotation="0" hflip="1" vflip="1" label="Tunnel-65" idLabPos="-16,-24" labelrot="0" valLabPos="-16,20" valLabRot="0" Name="Batt-sens" IsBus="false" />
+
+<item itemtype="Tunnel" CircId="Tunnel-67" mainComp="false" Show_id="false" Show_Val="false" Pos="12,12" rotation="0" hflip="-1" vflip="1" label="Tunnel-67" idLabPos="-16,-24" labelrot="0" valLabPos="-16,20" valLabRot="0" Name="Batt-sens" IsBus="false" />
 
 <item itemtype="Node" CircId="Node-20" mainComp="false" Pos="12,68" />
 
 <item itemtype="Node" CircId="Node-60" mainComp="false" Pos="-132,-68" />
+
+<item itemtype="Node" CircId="Node-66" mainComp="false" Pos="12,-160" />
 
 <item itemtype="Connector" uid="Connector-3" startpinid="Tunnel-5-pin" endpinid="Bus-6-busPinI" pointList="72,4,72,4" />
 
@@ -105,5 +119,17 @@
 <item itemtype="Connector" uid="Connector-120" startpinid="Fixed Voltage-59-outnod" endpinid="Node-60-0" pointList="-132,-84,-132,-68" />
 
 <item itemtype="Connector" uid="Connector-121" startpinid="Node-60-2" endpinid="7-Seg BCD-46-in4" pointList="-132,-68,-168,-68,-168,-60" />
+
+<item itemtype="Connector" uid="Connector-122" startpinid="Resistor-62-lPin" endpinid="Voltage Source-61-outPin" pointList="12,-200,-16,-200" />
+
+<item itemtype="Connector" uid="Connector-124" startpinid="Ground-64-Gnd" endpinid="Resistor-63-rPin" pointList="12,-112,12,-120" />
+
+<item itemtype="Connector" uid="Connector-125" startpinid="Tunnel-65-pin" endpinid="Node-66-1" pointList="4,-160,12,-160" />
+
+<item itemtype="Connector" uid="Connector-126" startpinid="Resistor-63-lPin" endpinid="Node-66-0" pointList="12,-152,12,-160" />
+
+<item itemtype="Connector" uid="Connector-127" startpinid="Node-66-2" endpinid="Resistor-62-rPin" pointList="12,-160,12,-168" />
+
+<item itemtype="Connector" uid="Connector-128" startpinid="Tunnel-67-pin" endpinid="mega328-2-PORTC4" pointList="12,12,4,12" />
 
 </circuit>

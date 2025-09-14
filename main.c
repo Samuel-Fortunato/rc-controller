@@ -9,27 +9,21 @@
 #define X2_PIN ADC2
 #define Y2_PIN ADC3
 
-uint16_t reading;
+#define BATT_PIN ADC4
 
 int main() {
-	uint8_t x1, y1, x2, y2;
-	
-	// global interrupt enable
-	SREG |= _BV(7);
+	uint16_t battery_sensor;
 	
 	adc_init(REF_AVCC, ADC_PRESCALE);
-	DIDR0 |= 0b00001111;
+	DIDR0 |= 0b00011111;
 	
 	DDRD = 0xFF;
 	DDRB = 0xFF;
 	
 	while (1) {
-		adc_read8(X1_PIN, &x1);
-		adc_read8(Y1_PIN, &y1);
-		adc_read8(X2_PIN, &x2);
-		adc_read8(Y2_PIN, &y2);
+		adc_read10(BATT_PIN, &battery_sensor);
 		
-		PORTD = x1;
-		PORTB = y1;
+		PORTD = battery_sensor;
+		PORTB = battery_sensor >> 8;
 	}
 }
