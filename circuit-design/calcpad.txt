@@ -9,6 +9,11 @@ n_cells = ? {3}
 Capacity = ? {1000}mAh
 C_rating = ? {20}h^-1
 
+'<h5> Thresholds </h5>
+V_low_cell = ? {3.4}V
+V_warn_cell = ? {3.3}V
+V_cutoff_cell = ? {3.1}V
+
 #post
 '<h5> Specs </h5>
 V_max_batt = n_cells*V_max_cell
@@ -16,6 +21,10 @@ V_nom_batt = n_cells*V_nom_cell
 V_min_batt = n_cells*V_min_cell
 
 I_max_batt = Capacity*C_rating|A
+
+V_low_batt = n_cells*V_low_cell
+V_warn_batt = n_cells*V_warn_cell
+V_cutoff_batt = n_cells*V_cutoff_cell
 
 #show
 '<h3> ----- MCU ----- </h3>
@@ -57,7 +66,8 @@ I_typ_MCU = 5.2mA
 '<h5> ADC </h5>
 Z_max_ADC_src = 10kΩ
 
-"----- Voltage Sensor -----"
+'<h3> ----- Voltage Sensor ----- </h3>
+'<h5> Voltage Divider </h5>
 R_1 = ? {27}kΩ
 R_2 = ? {16}kΩ
 R_tolerance = ? {5}%
@@ -68,9 +78,15 @@ R_1_min = (1 - R_tolerance) * R_1
 R_2_max = (1 + R_tolerance) * R_2
 R_2_min = (1 - R_tolerance) * R_2
 
+k_V_div_max = (R_2_max)/(R_1_min + R_2_max)
+k_V_div_min = (R_2_min)/(R_1_max + R_2_min)
+
 #show
-V_typ_max_sensor = V_max_batt*((R_2)/(R_1 + R_2))
-V_abs_max_sensor = V_max_batt*((R_2_max)/(R_1_min + R_2_max))
+k_V_div = (R_2)/(R_1 + R_2)
+
+V_typ_max_sensor = V_max_batt * k_V_div
+V_abs_max_sensor = V_max_batt * k_V_div_max
+
 Z_sensor = (R_1*R_2)/(R_1 + R_2)|kΩ
 #if V_abs_max_sensor > V_CC
 	'<p class="err"> ✖ Invalid V Divider resistors - V_out too high</p>
@@ -80,6 +96,24 @@ Z_sensor = (R_1*R_2)/(R_1 + R_2)|kΩ
 #end if
 
 I_loss_max_sensor = V_max_batt/(R_1 + R_2)|μA
+
+'<h5> ADC Readings </h5>
+V_sensor_full = V_max_batt * k_V_div
+V_sensor_low = V_low_batt * k_V_div
+V_sensor_warn = V_warn_batt * k_V_div
+V_sensor_cutoff = V_cutoff_batt * k_V_div
+
+#hide
+ADC(V) = (V * 1024)/(V_CC)
+
+#show
+ADC_sensor_full = round(ADC(V_sensor_full))
+ADC_sensor_low = round(ADC(V_sensor_low))
+ADC_sensor_warn = round(ADC(V_sensor_warn))
+ADC_sensor_cuttoff = ceiling(ADC(V_sensor_cutoff))
+
+
+
 
 
 
