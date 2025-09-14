@@ -6,3 +6,5 @@
 
 MCU -> nRF24l01
 "Voltage sensor" -> MCU
+
+MCU -> Buzzer

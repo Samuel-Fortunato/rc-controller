@@ -1,3 +1,6 @@
 "Stick 1" -> MCU
 "Stick 2" -> MCU
 Buttons -> MCU
+Potentiometer(s) -> MCU
+
+MCU -> Display
