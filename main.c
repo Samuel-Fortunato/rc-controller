@@ -17,13 +17,25 @@ int main() {
 	adc_init(REF_AVCC, ADC_PRESCALE);
 	DIDR0 |= 0b00011111;
 	
-	DDRD = 0xFF;
 	DDRB = 0xFF;
+	DDRD = 0b00000111;
 	
 	while (1) {
 		adc_read10(BATT_PIN, &battery_sensor);
 		
-		PORTD = battery_sensor;
-		PORTB = battery_sensor >> 8;
+		PORTD = battery_sensor >> 2;
+		
+		if ( battery_sensor > 777 ) {
+			PORTB = _BV(2);					// normal
+		}
+		else if ( battery_sensor > 754 ) {
+			PORTB = _BV(1);					// low
+		}
+		else if ( battery_sensor > 709 ) {
+			PORTB = _BV(0);					// warn
+		}
+		else {
+			PORTB = 0x00;					// cutoff
+		}
 	}
 }
